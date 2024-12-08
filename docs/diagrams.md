@@ -1,42 +1,59 @@
 ```mermaid
 erDiagram
-  AcountStatuses {
+  AccountStatuses ||--|{ Student_AccountStatus: have
+  AccountStatuses ||--|{ Business_AccountStatus: have
+  AccountStatuses {
     int Id
     int Name 
   }
+  Genders ||--o{ Students: are
   Genders {
     int Id
     varchar-u Name 
   }
+  IdentificationTypes ||--o{ Students: are
   IdentificationTypes {
     int Id
     varchar-u Name
   }
+  StudentTypes ||--o{ Students: have
   StudentTypes {
     int Id
     varchar-u Name
   }
+  Carrers ||--|{ Students_Carrers: have
   Carrers {
     int Id
     varchar-u Name
   }
+  Semesters ||--|{ Students_Semesters: have
   Semesters {
     int Id
     varchar-u SemesterCode
     varchar year
   }
+  Skills ||--|{ Students_Skills: have
   Skills {
     int Id
     varchar-u Name
   }
-  WorkPlacesTypes {
+  WorkPlaces ||--|{ Student_JobPreferences: "work at"
+  WorkPlaces ||--|{ JobOffers: offer
+  WorkPlaces {
     int Id
-    int-u Name 
+    varchar-u Name 
   }
+  EmploymentSchedules ||--|{ Student_JobPreferences: time
+  EmploymentSchedules ||--|{ JobOffers: offer
   EmploymentSchedules {
     int Id
-    int-u Name
+    varchar-u Name
   }
+  Students ||--|{ Students_Carrers: enroll
+  Students ||--|{ Students_Skills: have
+  Students ||--|{ Student_JobPreferences: "preffer"
+  Students ||--|{ Student_AccountStatus: have
+  Students ||--|{ JobApplications: apply
   Students {
     int Id
     int-fk StudentTypeId
@@ -47,12 +64,15 @@ erDiagram
     varchar IdentificationNumber
     varchar Email
     varchar PhoneNumber
+    int AccountStatusId
   }
+  Students_Carrers ||--|{ Students_Semesters: make
   Students_Carrers {
     int Id
     int StudentId
     int CarrerId 
   }
+  Students_Semesters ||--|{ Students_Graduations: complete
   Students_Semesters {
     int Id
     int StudentCarrerId
@@ -70,29 +90,30 @@ erDiagram
   Student_JobPreferences {
     int Id
     int StudentId
-    int WorkPlacePreferenceId
+    int WorkPlaceId
     int EmploymentScheduleId
   }
-  Student_AccountStatus {
-    int-u StudentId
-    int AccountStatusId
-  }
-```
 
-```mermaid
-erDiagram
-  ContratTypes {
+
+  ContractTypes ||--|{ JobOffers: have
+  ContractTypes {
     int Id
     varchar Name
   }
+  Businesses ||--|{ JobOffers: make
+  Businesses ||--|{ Business_AccountStatus: have
   Businesses {
     int Id
+    int AccountStatusId
     varchar Name
   }
+  JobRoles ||--|{ JobOffers: have
   JobRoles {
     int Id
     varchar Name
   }
+  JobOffers ||--|{ JobOffer_Skills: need
+  JobOffers ||--|{ JobApplications: have
   JobOffers {
     int Id
     int BusinessId
@@ -110,18 +131,14 @@ erDiagram
     int JobOfferId
     int SkillId
   }
-  Business_AccountStatus {
-    int BusinessId
-    int AccountStatusId
-  }
-```
 
-```mermaid
-erDiagram
+
+  ApplicationStatuses ||--|{ JobApplication_Statuses: "process status"
   ApplicationStatuses {
     int Id
     varchar Name 
   }
+  JobApplications ||--|{ JobApplication_Statuses: have
   JobApplications {
     int StudentId
     int JobOfferId
