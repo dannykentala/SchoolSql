@@ -1,5 +1,9 @@
 ### Default tables data
 
+**AccountStatus**
+- active
+- disable
+
 **StudentTypes**
 - student 
 - graduated

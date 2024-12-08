@@ -1,5 +1,9 @@
 ```mermaid
 erDiagram
+  AcountStatuses {
+    int Id
+    int Name 
+  }
   Genders {
     int Id
     varchar-u Name 
@@ -65,6 +69,10 @@ erDiagram
     int WorkPlacePreferenceId
     int EmploymentSchedules
   }
+  Student_AccountStatus {
+    int-u StudentId
+    int AccountStatusId
+  }
 ```
 
 ```mermaid
@@ -98,6 +106,10 @@ erDiagram
     int JobOfferId
     int SkillId
   }
+  Business_AccountStatus {
+    int BusinessId
+    int AccountStatusId
+  }
 ```
 
 ```mermaid
@@ -112,7 +124,7 @@ erDiagram
   }
   JobApplication_Statuses {
     int JobApplicationId
-    int ApplicationStateId
+    int ApplicationStatusId
     date Date
   }
 ```
