@@ -41,7 +41,6 @@ erDiagram
     int Id
     int-fk StudentTypeId
     int-fk IdentificationTypeId
-    int-fk CarrerId
     varchar Name
     varchar LastName
     varchar GenderId
@@ -49,9 +48,14 @@ erDiagram
     varchar Email
     varchar PhoneNumber
   }
-  Students_Semesters {
+  Students_Carrers {
     int Id
     int StudentId
+    int CarrerId 
+  }
+  Students_Semesters {
+    int Id
+    int StudentCarrerId
     int SemesterId
   }
   Students_Graduations {
@@ -67,7 +71,7 @@ erDiagram
     int Id
     int StudentId
     int WorkPlacePreferenceId
-    int EmploymentSchedules
+    int EmploymentScheduleId
   }
   Student_AccountStatus {
     int-u StudentId
