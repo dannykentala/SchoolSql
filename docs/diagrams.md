@@ -4,7 +4,7 @@ erDiagram
   AccountStatuses ||--|{ Business_AccountStatus: have
   AccountStatuses {
     int Id
-    int Name 
+    varchar Name 
   }
   Genders ||--o{ Students: are
   Genders {
@@ -58,13 +58,13 @@ erDiagram
     int Id
     int-fk StudentTypeId
     int-fk IdentificationTypeId
+    int-fk AccountStatusId
+    int-fk GenderId
     varchar Name
     varchar LastName
-    varchar GenderId
     varchar IdentificationNumber
     varchar Email
     varchar PhoneNumber
-    int AccountStatusId
   }
   Students_Carrers ||--|{ Students_Semesters: make
   Students_Carrers {
