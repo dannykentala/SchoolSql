@@ -3,6 +3,11 @@ INSERT INTO AccountStatuses (Name) VALUES
 ('active'),
 ('disable');
 
+-- Insert data into OfferStatuses
+INSERT INTO OfferStatuses (name) VALUES
+('open'),
+('closed');
+
 -- Insert data into StudentTypes
 INSERT INTO StudentTypes (Name) VALUES
 ('student'),
@@ -138,10 +143,6 @@ INSERT INTO Businesses (AccountStatusId, Name) VALUES
 (1, 'Software Ventures Ltd.'),
 (2, 'FashionTech Apparel');
 
--- Insert data into OfferStatuses
-INSERT INTO OfferStatuses (name) VALUES
-('open'),
-('closed');
 
 -- Insert data into JobOffers
 INSERT INTO JobOffers (BusinessId, ContractTypeId, JobRoleId, WorkPlaceId, EmploymentScheduleId, OfferStatusId, Salary, OfferTitle, Description, Experience, Location) VALUES
