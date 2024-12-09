@@ -127,6 +127,11 @@ CREATE TABLE ContractTypes (
   Name VARCHAR(50) NOT NULL
 );
 
+CREATE TABLE OfferStatuses (
+  Id SERIAL PRIMARY KEY,
+  Name VARCHAR(50) NOT NULL
+);
+
 -- Create JobOffers table (for storing job offers)
 CREATE TABLE JobOffers (
   Id SERIAL PRIMARY KEY,
@@ -135,6 +140,7 @@ CREATE TABLE JobOffers (
   JobRoleId INT REFERENCES JobRoles(Id),
   WorkPlaceId INT REFERENCES WorkPlaces(Id),
   EmploymentScheduleId INT REFERENCES EmploymentSchedules(Id),
+  OfferStatusId INT REFERENCES OfferStatuses(Id)
   Salary DECIMAL(10, 2),
   OfferTitle VARCHAR(255) NOT NULL,
   Description TEXT,

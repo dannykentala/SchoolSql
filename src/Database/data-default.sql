@@ -138,12 +138,17 @@ INSERT INTO Businesses (AccountStatusId, Name) VALUES
 (1, 'Software Ventures Ltd.'),
 (2, 'FashionTech Apparel');
 
+-- Insert data into OfferStatuses
+INSERT INTO OfferStatuses (name) VALUES
+('open'),
+('closed');
+
 -- Insert data into JobOffers
-INSERT INTO JobOffers (BusinessId, ContractTypeId, JobRoleId, WorkPlaceId, EmploymentScheduleId, Salary, OfferTitle, Description, Experience, Location) VALUES
-(1, 1, 1, 1, 2, 3000.00, 'Backend Developer', 'Work on backend development of web applications', '2 years', 'New York'),
-(1, 2, 2, 2, 1, 4000.00, 'Fullstack Developer', 'Develop both frontend and backend for a startup', '3 years', 'Remote'),
-(2, 3, 3, 3, 2, 2500.00, 'System Admin', 'Manage servers and databases', '5 years', 'Los Angeles'),
-(3, 1, 4, 1, 2, 3500.00, 'Mobile Developer', 'Develop mobile applications for iOS and Android', '3 years', 'San Francisco');
+INSERT INTO JobOffers (BusinessId, ContractTypeId, JobRoleId, WorkPlaceId, EmploymentScheduleId, OfferStatusId, Salary, OfferTitle, Description, Experience, Location) VALUES
+(1, 1, 1, 1, 2, 1, 3000.00, 'Backend Developer', 'Work on backend development of web applications', '2 years', 'New York'),
+(1, 2, 2, 2, 1, 1, 4000.00, 'Fullstack Developer', 'Develop both frontend and backend for a startup', '3 years', 'Remote'),
+(2, 3, 3, 3, 2, 1, 2500.00, 'System Admin', 'Manage servers and databases', '5 years', 'Los Angeles'),
+(3, 1, 4, 1, 2, 1, 3500.00, 'Mobile Developer', 'Develop mobile applications for iOS and Android', '3 years', 'San Francisco');
 
 -- Insert data into JobOffer_Skills
 INSERT INTO JobOffer_Skills (JobOfferId, SkillId) VALUES
