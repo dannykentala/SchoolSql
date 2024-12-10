@@ -1,4 +1,4 @@
-DROP FUNCTION businessjoboffersreport;
+-- DROP FUNCTION businessjoboffersreport;
 
 CREATE OR REPLACE FUNCTION businessJobOffersReport(
   vfilters JSONB
@@ -7,7 +7,7 @@ CREATE OR REPLACE FUNCTION businessJobOffersReport(
 LANGUAGE plpgsql
 AS $$
 DECLARE
-  vbusinessid INT := (vfilters->>'businessId')::VARCHAR;
+  vbusinessid INT := (vfilters->>'businessId')::INT;
   jobTitleRegex VARCHAR := (vfilters->>'jobTitle')::VARCHAR;
 BEGIN
   RETURN QUERY
@@ -47,8 +47,9 @@ BEGIN
 END;
 $$;
 
+-- job offers by business
 SELECT * FROM businessjoboffersreport(
   '{
     "businessId": 1,
-    "jobTitle": ""
+    "jobTitle": null
   }'::JSONB)
